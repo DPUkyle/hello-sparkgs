@@ -1,0 +1,26 @@
+plugins {
+    id 'org.gosu-lang.gosu' version '0.1.3'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.gosu-lang.sparkgs:sparkgs:0.1-alpha4-SNAPSHOT'
+    testCompile 'junit:junit:4.12'
+}
+
+sourceSets.main.gosu.filter.include '**/*.gsp' //this is a bug in gosu plugin 0.1.3; *.gsp are included by default in future versions
+
+task runSparkApp(type:JavaExec, dependsOn: classes) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'SparkExample' //fqn of gsp
+}
+
+task runSparkAppDirectFromSource(type:JavaExec, dependsOn: clean) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'gw.lang.Gosu'
+    args = ['src/main/gosu/SparkExample.gsp'] //relative path to *.gsp
+}
