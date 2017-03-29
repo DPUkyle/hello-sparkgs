@@ -1,5 +1,5 @@
 extends sparkgs.SparkGSFile
 
-get('/', \-> "Hello World")
+get('/', \-> "Hello Cruel World @ ${Date.Now}")
 
 //print("Hello cruel world")
