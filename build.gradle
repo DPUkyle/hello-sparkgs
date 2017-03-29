@@ -2,6 +2,10 @@ plugins {
     id 'org.gosu-lang.gosu' version '0.1.3'
 }
 
+wrapper {
+    gradleVersion '3.4.1'
+}
+
 repositories {
     mavenLocal()
     mavenCentral()
